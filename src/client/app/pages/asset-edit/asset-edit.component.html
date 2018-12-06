@@ -1,0 +1,43 @@
+<!-- TITLE -->
+<mat-card class="mb-40">
+    <h1>Asset Edit</h1>
+</mat-card>
+
+<mat-card>
+    <div class="card-title">
+        <mat-icon>edit</mat-icon>
+        Edit
+    </div>
+
+    <form #skaffolderForm="ngForm" class="container-fluid">
+        
+        
+        <mat-form-field class="full-width">
+            <input matInput type="text" placeholder="Nane" [(ngModel)]="item.nane"  name="nane" id="nane" >
+        </mat-form-field>
+        
+        <!-- RELATIONS -->
+        <h2 class="mb-20">Relations</h2>
+        
+        
+        
+        <mat-form-field class="full-width mt-20">
+            <mat-select placeholder="User" class="full-width" #fk_asset_user='ngModel' [(ngModel)]="item.fk_asset_user" name="fk_asset_user" id="fk_asset_user" required>
+                 <mat-option *ngFor="let item of listFk_asset_user" value="{{item._id}}">
+                   {{item._id}}
+                </mat-option>
+           </mat-select>
+        </mat-form-field>   
+        
+        
+        
+
+
+        <!-- BUTTON BAR -->
+        <div class="mt-40">
+            <button mat-raised-button color="primary" class="pull-right mr-5" (click)="save(skaffolderForm.valid, item)">Save</button>
+            <button mat-raised-button class="pull-right " (click)="goBack()">Back To List</button>
+        </div>
+    </form>
+
+</mat-card>
